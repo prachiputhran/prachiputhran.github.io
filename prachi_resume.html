@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prachi Puthran — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0f2340;
+      --navy-mid: #1a3a5c;
+      --accent: #c8893a;
+      --cream: #faf7f2;
+      --warm-white: #ffffff;
+      --text: #1c1c1c;
+      --muted: #6b6b6b;
+      --light-line: #e8e2d9;
+      --tag-bg: #eef2f7;
+      --tag-text: #1a3a5c;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SIDEBAR ── */
+    .layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: var(--navy);
+      color: #fff;
+      padding: 3rem 2rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #fff;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .sidebar-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #fff;
+    }
+
+    .sidebar-title {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    .sidebar-section-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 0.6rem;
+      word-break: break-all;
+    }
+
+    .contact-item a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item a:hover { color: var(--accent); }
+
+    .contact-icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      opacity: 0.5;
+    }
+
+    .skill-group { margin-bottom: 1rem; }
+
+    .skill-group-name {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .skill-tag {
+      font-size: 0.72rem;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.8);
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      border: 0.5px solid rgba(255,255,255,0.12);
+    }
+
+    .cert-item {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.7);
+      padding: 0.5rem 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+      line-height: 1.4;
+    }
+
+    .cert-item:last-child { border-bottom: none; }
+
+    .cert-org {
+      font-size: 0.68rem;
+      color: var(--accent);
+      margin-top: 0.15rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-top: auto;
+    }
+
+    .nav-link {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      padding: 0.3rem 0;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-link::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: currentColor;
+      flex-shrink: 0;
+      transition: width 0.2s;
+    }
+
+    .nav-link:hover { color: rgba(255,255,255,0.9); }
+    .nav-link:hover::before { width: 24px; }
+
+    /* ── MAIN ── */
+    .main {
+      background: var(--warm-white);
+      padding: 3.5rem 3.5rem 4rem;
+      overflow: hidden;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .section:nth-child(1) { animation-delay: 0.05s; }
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.15s; }
+    .section:nth-child(4) { animation-delay: 0.2s; }
+    .section:nth-child(5) { animation-delay: 0.25s; }
+    .section:nth-child(6) { animation-delay: 0.3s; }
+    .section:nth-child(7) { animation-delay: 0.35s; }
+    .section:nth-child(8) { animation-delay: 0.4s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--light-line);
+    }
+
+    /* Profile */
+    .profile-text {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.85;
+      border-left: 3px solid var(--accent);
+      padding-left: 1.25rem;
+      font-style: italic;
+    }
+
+    /* Entry cards */
+    .entry {
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 0.5px solid var(--light-line);
+    }
+
+    .entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .entry-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.15rem;
+      flex-wrap: wrap;
+    }
+
+    .entry-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    .entry-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .entry-sub {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .entry-sub a {
+      color: var(--navy-mid);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      border-bottom: 1px dashed var(--light-line);
+      transition: border-color 0.2s;
+    }
+
+    .entry-sub a:hover { border-color: var(--accent); }
+
+    ul.bullets {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.bullets li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+      line-height: 1.65;
+    }
+
+    ul.bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 0.22rem;
+    }
+
+    ul.bullets li strong {
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    /* Education special */
+    .edu-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .edu-stat {
+      background: var(--tag-bg);
+      border-radius: 4px;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.75rem;
+      color: var(--tag-text);
+      font-weight: 500;
+    }
+
+    /* Leadership */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .leadership-card {
+      border: 0.5px solid var(--light-line);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .leadership-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(200,137,58,0.08);
+    }
+
+    .leadership-role {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .leadership-org {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .leadership-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* Print button */
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.55rem 1.2rem;
+      font-size: 0.78rem;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+      margin-bottom: 2.5rem;
+    }
+
+    .print-btn:hover { background: var(--navy-mid); }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; }
+      .main { padding: 2rem 1.5rem; }
+      .nav-links { display: none; }
+    }
+
+    @media print {
+      .print-btn { display: none; }
+      .sidebar { position: static; height: auto; }
+      .layout { grid-template-columns: 220px 1fr; }
+      .section { opacity: 1; transform: none; animation: none; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
+    <div>
+      <div class="avatar">PP</div>
+      <div class="sidebar-name">Prachi<br>Puthran</div>
+      <div class="sidebar-title">CS Engineer · AI Major · Mumbai</div>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <div class="sidebar-section-label">Contact</div>
+
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <a href="mailto:prachiputhran1007@gmail.com">prachiputhran1007@gmail.com</a>
+      </div>
+
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        +91-9930836096
+      </div>
+
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://linkedin.com/in/prachiputhran" target="_blank">linkedin.com/in/prachiputhran</a>
+      </div>
+
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        <a href="https://github.com/prachiputhran" target="_blank">github.com/prachiputhran</a>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div>
+      <div class="sidebar-section-label">Skills</div>
+      <div class="skill-group">
+        <div class="skill-group-name">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">Java</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">ML / AI</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Scikit-learn</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">Keras</span><span class="skill-tag">CNNs</span><span class="skill-tag">SHAP</span><span class="skill-tag">LIME</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Data & Viz</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">SciPy</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span><span class="skill-tag">Power BI</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-name">Cloud & DevOps</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Azure</span><span class="skill-tag">Docker</span><span class="skill-tag">FastAPI</span><span class="skill-tag">Flask</span><span class="skill-tag">CI/CD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div>
+      <div class="sidebar-section-label">Certifications</div>
+      <div class="cert-item">IBM Business Analyst Professional Certificate<div class="cert-org">Coursera · IBM</div></div>
+      <div class="cert-item">Google Advanced Data Analytics Professional<div class="cert-org">Coursera · Google</div></div>
+      <div class="cert-item">Azure Fundamentals (AZ-900)<div class="cert-org">Microsoft</div></div>
+      <div class="cert-item">AI Program<div class="cert-org">Samsung Innovation Campus</div></div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="nav-links">
+      <a class="nav-link" href="#profile">Profile</a>
+      <a class="nav-link" href="#education">Education</a>
+      <a class="nav-link" href="#research">Research</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#experience">Experience</a>
+      <a class="nav-link" href="#leadership">Leadership</a>
+    </nav>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main">
+
+    <button class="print-btn" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print / Save as PDF
+    </button>
+
+    <!-- PROFILE -->
+    <section class="section" id="profile">
+      <div class="section-header">
+        <div class="section-title">Profile</div>
+        <div class="section-line"></div>
+      </div>
+      <p class="profile-text">
+        Third-year Computer Engineering student (AI Major) at RAIT, Navi Mumbai, with a CGPA of 8.27. Experienced in end-to-end ML system design — from deep learning and statistical modelling to containerised, cloud-deployed APIs. Active researcher in Explainable AI, with cross-domain validation across healthcare and financial datasets. Seeking a data science or ML engineering internship to apply and deepen hands-on expertise.
+      </p>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <div class="section-header">
+        <div class="section-title">Education</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Ramrao Adik Institute of Technology, Navi Mumbai</div>
+          <div class="entry-date">2023 – Present</div>
+        </div>
+        <div class="entry-sub">B.Tech in Computer Engineering · AI Major</div>
+        <div class="edu-meta">
+          <span class="edu-stat">CGPA: 8.27 / 10</span>
+          <span class="edu-stat">~3.6 GPA (US equivalent)</span>
+          <span class="edu-stat">Top 15% of class</span>
+        </div>
+        <ul class="bullets" style="margin-top:0.75rem;">
+          <li>Relevant coursework: Machine Learning, Deep Learning, Data Structures &amp; Algorithms, Statistics, Database Systems, Cloud Computing</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section" id="research">
+      <div class="section-header">
+        <div class="section-title">Research</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Explainable AI in High-Stakes ML Systems</div>
+          <div class="entry-date">2024 – Present</div>
+        </div>
+        <div class="entry-sub">Undergraduate Research · RAIT, Navi Mumbai</div>
+        <ul class="bullets">
+          <li>Evaluated <strong>SHAP and LIME</strong> interpretability methods across 3 datasets — Breast Cancer, Heart Disease, and German Credit — spanning healthcare and financial domains</li>
+          <li>Reported <strong>4 quantitative metrics</strong> (consistency, stability, F1 score, Spearman rank correlation) across all models and datasets in structured comparative tables</li>
+          <li>Key finding: <strong>LIME's stability gap</strong> held consistently across all three datasets, providing cross-domain validation of the conclusion</li>
+          <li>Preparing findings for submission to an undergraduate research forum</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-header">
+        <div class="section-title">Projects</div>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Bayesian Inference for CTR Estimation</div>
+          <div class="entry-date">2025</div>
+        </div>
+        <div class="entry-sub">Statistics &amp; Probabilistic Modelling · Python, NumPy, SciPy, Matplotlib &nbsp;|&nbsp; <a href="https://github.com/prachiputhran" target="_blank">github.com/prachiputhran</a></div>
+        <ul class="bullets">
+          <li>Implemented a <strong>Beta-Binomial model with sequential (online) updating</strong> to estimate click-through rates from streaming ad data</li>
+          <li>Modelled prior belief updates as each impression arrived; visualised posterior evolution across <strong>10,000 simulated events</strong></li>
+          <li>Demonstrated credible-interval shrinkage and convergence, highlighting advantages of Bayesian over frequentist point estimates for small samples</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">A/B Testing Simulation with Power Analysis</div>
+          <div class="entry-date">2025</div>
+        </div>
+        <div class="entry-sub">Hypothesis Testing &amp; Experimental Design · Python, SciPy, Matplotlib &nbsp;|&nbsp; <a href="https://github.com/prachiputhran" target="_blank">github.com/prachiputhran</a></div>
+        <ul class="bullets">
+          <li>Built an end-to-end A/B testing simulator covering <strong>effect size calculation, sample size planning, and p-value interpretation</strong></li>
+          <li>Ran Monte Carlo validation (10,000 iterations) to empirically verify Type I error rate at α=0.05 and confirm 80% power targets</li>
+          <li>Simulated common pitfalls — peeking, underpowered tests, multiple comparisons — to produce a practical guide for experiment design</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Data Cleaning &amp; EDA — NYC Taxi Dataset</div>
+          <div class="entry-date">2025</div>
+        </div>
+        <div class="entry-sub">Exploratory Data Analysis · Python, Pandas, NumPy, Seaborn, Matplotlib &nbsp;|&nbsp; <a href="https://github.com/prachiputhran" target="_blank">github.com/prachiputhran</a></div>
+        <ul class="bullets">
+          <li>Cleaned and standardised a <strong>1M+ row</strong> messy public dataset: handled missing values, outliers, type mismatches, and duplicate records</li>
+          <li>Performed full EDA — trip duration distributions, fare vs distance correlations, borough-level demand heatmaps, and peak-hour analysis</li>
+          <li>Documented each transformation decision; structured notebook for reproducibility with clear data quality before/after summaries</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Linear Algebra for Machine Learning</div>
+          <div class="entry-date">2025</div>
+        </div>
+        <div class="entry-sub">Mathematical Foundations · Python, NumPy, Scikit-learn &nbsp;|&nbsp; <a href="https://github.com/prachiputhran" target="_blank">github.com/prachiputhran</a></div>
+        <ul class="bullets">
+          <li>Implemented <strong>PCA, SVD, and Eigendecomposition from first principles</strong> without library wrappers, then validated against sklearn outputs</li>
+          <li>Applied PCA to a high-dimensional image dataset achieving <strong>95% variance retention</strong> with 40% fewer dimensions</li>
+          <li>Produced annotated notebook documenting geometric intuitions for each decomposition as a teaching reference</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Retinal Disease Classification</div>
+          <div class="entry-date">2024</div>
+        </div>
+        <div class="entry-sub">Deep Learning · Python, TensorFlow, OpenCV &nbsp;|&nbsp; <a href="https://github.com/prachiputhran" target="_blank">github.com/prachiputhran</a></div>
+        <ul class="bullets">
+          <li>Built a <strong>CNN-based classifier</strong> for 5-class retinal disease detection from fundus images, achieving <strong>91% test accuracy</strong></li>
+          <li>Reduced false-negative rate by <strong>~18%</strong> through targeted data augmentation (rotation, flipping, CLAHE) and class-balanced sampling</li>
+          <li>Evaluated with accuracy, precision, recall, and ROC-AUC; confusion matrix analysis to identify failure modes</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">MLOps Framework for Placement Prediction</div>
+          <div class="entry-date">2024</div>
+        </div>
+        <div class="entry-sub">MLOps · Python, Scikit-learn, Docker, CI/CD &nbsp;|&nbsp; <a href="https://github.com/prachiputhran" target="_blank">github.com/prachiputhran</a></div>
+        <ul class="bullets">
+          <li>Designed an end-to-end ML pipeline for predicting campus placement outcomes, cutting manual retraining effort by <strong>~60%</strong></li>
+          <li>Automated data validation, feature engineering, model training, and versioned model registry using MLOps principles</li>
+          <li>Containerised with Docker; implemented a CI/CD workflow for automated retraining on data drift</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">ML Inference API Deployment — FastAPI + Azure</div>
+          <div class="entry-date">2024</div>
+        </div>
+        <div class="entry-sub">Cloud Engineering · FastAPI, Flask, Docker, Azure App Services &nbsp;|&nbsp; <a href="https://github.com/prachiputhran" target="_blank">github.com/prachiputhran</a></div>
+        <ul class="bullets">
+          <li>Deployed <strong>2 ML inference APIs</strong> handling real-time predictions with <strong>sub-200 ms</strong> average response latency</li>
+          <li>Containerised with Docker and deployed to Azure App Services; explored Kubernetes horizontal scaling basics</li>
+          <li>Documented endpoints with OpenAPI spec; integrated basic health-check monitoring</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Emotion Detection System</div>
+          <div class="entry-date">2023</div>
+        </div>
+        <div class="entry-sub">Computer Vision · Python, OpenCV, Scikit-learn &nbsp;|&nbsp; <a href="https://github.com/prachiputhran" target="_blank">github.com/prachiputhran</a></div>
+        <ul class="bullets">
+          <li>Built a real-time facial emotion classifier (7 classes) using HOG feature extraction and an SVM pipeline</li>
+          <li>Achieved <strong>84% validation accuracy</strong> on the FER-2013 benchmark; deployed as a lightweight webcam demo</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Interactive Business Dashboard — Power BI</div>
+          <div class="entry-date">2025</div>
+        </div>
+        <div class="entry-sub">Data Visualisation · Power BI, DAX, Excel</div>
+        <ul class="bullets">
+          <li>Designed a multi-page Power BI dashboard with <strong>12 KPIs</strong>, dynamic slicers, drill-down views, and custom DAX measures</li>
+          <li>Reduced stakeholder reporting cycle from weekly manual Excel exports to a live self-serve dashboard</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="section-header">
+        <div class="section-title">Experience</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="entry">
+        <div class="entry-top">
+          <div class="entry-title">Business Analyst Intern — Innovative NDT Services</div>
+          <div class="entry-date">Jan 2025 – Present</div>
+        </div>
+        <ul class="bullets">
+          <li>Built a Power BI dashboard tracking <strong>8 operational KPIs</strong>, reducing manual reporting effort by <strong>~3 hours/week</strong></li>
+          <li>Identified a data quality issue in procurement records skewing cost forecasts by <strong>~12%</strong>; implemented a validation rule to prevent recurrence</li>
+          <li>Analysed 6 months of operational data to surface efficiency bottlenecks; recommendations adopted into Q2 process review</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="section" id="leadership">
+      <div class="section-header">
+        <div class="section-title">Leadership &amp; Activities</div>
+        <div class="section-line"></div>
+      </div>
+      <div class="leadership-grid">
+
+        <div class="leadership-card">
+          <div class="leadership-role">Creative Head</div>
+          <div class="leadership-org">ACM Student Chapter</div>
+          <div class="leadership-desc">Led design of chapter branding and event collateral for a 300+ member community.</div>
+        </div>
+
+        <div class="leadership-card">
+          <div class="leadership-role">Design Head</div>
+          <div class="leadership-org">ISTE Student Chapter</div>
+          <div class="leadership-desc">Coordinated visual identity across technical fests and workshops.</div>
+        </div>
+
+        <div class="leadership-card">
+          <div class="leadership-role">Event Coordinator</div>
+          <div class="leadership-org">SOW Committee</div>
+          <div class="leadership-desc">Managed logistics for inter-college events with 500+ attendees.</div>
+        </div>
+
+        <div class="leadership-card">
+          <div class="leadership-role">Participant</div>
+          <div class="leadership-org">Capgemini Exceller AgentifAI Buildathon · Batch 2026 &amp; 2027</div>
+          <div class="leadership-desc">Competed in an industry-hosted agentic AI hackathon, designing and prototyping an AI agent solution under real-world constraints.</div>
+        </div>
+
+        <div class="leadership-card">
+          <div class="leadership-role">NSS Volunteer</div>
+          <div class="leadership-org">National Service Scheme</div>
+          <div class="leadership-desc">Took an active part in social activities and community outreach drives to help spread awareness on key social issues.</div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>
